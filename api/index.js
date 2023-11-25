@@ -1,6 +1,6 @@
 const express = require("express");
 const routerApi = require("./routes");
-const {logErrors, errorHandler, boomErrorHandler} = require("./middlewares/error.handlers");
+const {logErrors, errorHandler, boomErrorHandler, ormErrorHandler} = require("./middlewares/error.handlers");
 const cors = require("cors");
 
 const app = express();
@@ -15,7 +15,7 @@ app.use(express.json());
     //   })
     // });
 
-    const list = ["127.0.0.1:5500/frontend.html", "https://myapp.co"];
+    const list = ["http://localhost:8080", "https://myapp.co"];
     const options = {
       origin: (origin, callback) => {
         if(list.includes(origin) || !origin){
@@ -36,6 +36,7 @@ app.use(express.json());
     routerApi(app);
 
     app.use(logErrors);
+    app.use(ormErrorHandler);
     app.use(boomErrorHandler);
     app.use(errorHandler);
 
