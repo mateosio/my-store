@@ -27,7 +27,7 @@ class ProductsServices {
   async create(data) {
     const newProduct = await models.Product.create(data);
     return newProduct;
-  }:
+  }
 
   async find(query){
     const options = {
