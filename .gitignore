@@ -132,3 +132,4 @@ dist
 #windows
 postgres_data
 mysql_data
+.vercel
