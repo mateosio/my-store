@@ -17,7 +17,7 @@ router.get("/",
       next(error)
       }
 
-})
+});
 
 // router.get("/filtro", (req, res) =>{
 
