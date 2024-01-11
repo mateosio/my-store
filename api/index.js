@@ -17,19 +17,23 @@ app.use(express.json());
     //   })
     // });
 
-    const list = ["http://localhost:8080", "https://myapp.co"];
-    const options = {
-      origin: (origin, callback) => {
-        if(list.includes(origin) || !origin){
-          callback(null, true);
-        } else{
-          callback(new Error("No permitido"));
-        }
-      }
+    // const list = ["http://localhost:8080", "https://myapp.co"];
+    // const options = {
+    //   origin: (origin, callback) => {
+    //     if(list.includes(origin) || !origin){
+    //       callback(null, true);
+    //     } else{
+    //       callback(new Error("No permitido"));
+    //     }
+    //   }
+    // };
+
+    const corsOptions = {
+      origin: "*",
     };
+    app.use(cors(corsOptions));
 
-
-    app.use(cors(options));
+    // app.use(cors(options));
 
     app.get("/api", (req, res)=>{
       res.send("Hola server")
