@@ -1,9 +1,9 @@
 const express = require("express");
-const routerApi = require("./api/routes/index");
-const {logErrors, errorHandler, boomErrorHandler, ormErrorHandler} = require("./api/middlewares/error.handlers");
+const routerApi = require("./routes/index");
+const {logErrors, errorHandler, boomErrorHandler, ormErrorHandler} = require("./middlewares/error.handlers");
 const cors = require("cors");
 //Con el require del archivo auth se le dice a la aplicación que tiene que usar las estrategias de passport que esten definidas en el index
-require("./api/utils/auth")
+require("./utils/auth")
 
 const app = express();
 const port = process.env.PORT || 3000;
